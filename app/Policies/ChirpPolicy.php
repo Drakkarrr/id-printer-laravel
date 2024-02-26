@@ -37,7 +37,11 @@ class ChirpPolicy
      */
     public function update(User $user, Chirp $chirp): bool
     {
-        //
+        // return $user->id === $chirp->user_id
+        //     ? Response::allow()
+        //     : Response::deny('You do not own this chirp.');
+
+        return $chirp->user()->is($user);
     }
 
     /**
